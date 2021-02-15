@@ -46,6 +46,5 @@ namespace NWareBlogAPI.Controllers
             }
             return Ok(post);
         }
-
     }
 }

@@ -1,0 +1,41 @@
+﻿@page
+@model NWareBlogWeb.Pages.Posts.AddModel
+@{
+    ViewData["Title"] = "Blog - Add Post";
+}
+
+<h4>Add Post</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Post.Title" class="control-label"></label>
+                <input asp-for="Post.Title" class="form-control" />
+                <span asp-validation-for="Post.Title" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Post.CategoryId"  class="control-label">Category</label>
+                <select asp-for="Post.CategoryId" asp-items="Model.CategoriesOptions" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Post.PublicationDate" class="control-label"></label>
+                <input asp-for="Post.PublicationDate" class="form-control" value="@DateTime.Today" />
+                <span asp-validation-for="Post.PublicationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Post.Content" class="control-label"></label>
+                <textarea asp-asp-for="Post.Content" rows="5" class="form-control"></textarea>
+                <span asp-validation-for="Post.Content" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

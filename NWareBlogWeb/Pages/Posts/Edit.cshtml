@@ -1,0 +1,45 @@
+﻿@page
+@model NWareBlogWeb.Pages.Posts.EditModel
+@{
+    ViewData["Title"] = "Blog - Edit Post";
+}
+<h4>Post</h4>
+<hr />
+
+<form method="post">
+       <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Post.Id" />
+        <div class="form-group row">
+            <label asp-for="Post.Title" class="col-form-label col-sm-2"></label>
+            <div class="col-sm-10">
+                <input asp-for="Post.Title" class="form-control" />
+                <span asp-validation-for="Post.Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Post.CategoryId" class="col-form-label col-sm-2">Category</label>
+            <div class="col-sm-10 ">
+                <select asp-for="Post.CategoryId" asp-items="Model.CategoriesOptions" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Post.PublicationDate" class="col-form-label col-sm-2"></label>
+            <div class="col-sm-10">
+                <input asp-for="Post.PublicationDate" class="form-control" />
+                <span asp-validation-for="Post.PublicationDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Post.Content" class="control-label"></label>
+            <textarea asp-for="Post.Content" class="form-control" rows="5"></textarea>
+            <span asp-validation-for="Post.Content" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
